@@ -108,19 +108,19 @@ print
 #loading...
 print ("{}").format(Cafe)
 try:
-	toolbar_width = 40
+    toolbar_width = 40
 
 
-	sys.stdout.write("[%s]" % (" " * toolbar_width))
-	sys.stdout.flush()
-	sys.stdout.write("\b" * (toolbar_width+1)) #after '['
+    sys.stdout.write(f'[{" " * toolbar_width}]')
+    sys.stdout.flush()
+    sys.stdout.write("\b" * (toolbar_width+1)) #after '['
 
-	for i in xrange(toolbar_width):
-    		time.sleep(0.1) # do real work here
-    		sys.stdout.write("#") #GUI
-    		sys.stdout.flush()
+    for _ in xrange(toolbar_width):
+        time.sleep(0.1) # do real work here
+        sys.stdout.write("#") #GUI
+        sys.stdout.flush()
 
-	sys.stdout.write("\n")
+    sys.stdout.write("\n")
 except KeyboardInterrupt:
 	print("{0}[{1}x{0}]{2}Loading Interrupted!").format(Cafe , RED , RED)
 	os.system(exit)
@@ -214,89 +214,78 @@ try:
 		
 		
 		#
-		def choices ():
-			sleep(5.0)
-			os.system(clear)
-			print """
-			    {0}<{1}Now choose between these options{0}>{1}:
-			""".format (RED , WHITE)
-			sleep (0.3)
-			print"""   {0}[{1}1{0}]{2} Sniff Images
-			""".format(YELLOW , RED , WHITE)			
-			sleep (0.3)
-			print"""   {0}[{1}2{0}]{2} Sniff Websites
-			""".format(YELLOW , RED , WHITE)
-			sleep (0.3)
-			print"""   {0}[{1}3{0}]{2} Sniff HTTP Passwords
-			""".format(YELLOW , RED , WHITE)
-			sleep (0.3)
-			print"""   {0}[{1}4{0}]{2} Sniff Low Encrypted Messages
-			""".format(YELLOW , RED , WHITE)
-			sleep (0.3)
-			print"""   {0}[{1}5{0}]{2} Sniff All
-			""".format(YELLOW , RED , WHITE)
-			sleep (0.3)
-			print """\n{}Press Ctrl+C to exit""".format(RED)
-			sleep (0.3)
-			print ("{}").format(BLUE)
-			client_choice = raw_input ("\nThe WATCHER > ")
+		def choices():
+		    sleep(5.0)
+		    os.system(clear)
+		    sleep(5.0)
+		    sleep (0.3)
+		    sleep(5.0)
+		    sleep (0.3)
+		    sleep(5.0)
+		    sleep (0.3)
+		    sleep(5.0)
+		    sleep (0.3)
+		    sleep(5.0)
+		    sleep (0.3)
+		    sleep(5.0)
+		    sleep (0.3)
+		    sleep(5.0)
+		    sleep (0.3)
+		    print ("{}").format(BLUE)
+		    client_choice = raw_input ("\nThe WATCHER > ")
 
-			###################################################################
-			
+		    	###################################################################
+		    	
 
-			if client_choice == "1":
-				sleep (1.0)
-				print("\n{0}[{1}+{0}]{2}Sniffing Images").format(RED , WHITE , Cafe)
-				driftnet = 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "driftnet -i {0} -b; bash"'.format(interface)
-				print
-				os.system(driftnet)
-				return(choices())
-			
-			elif client_choice == "2":
-				sleep (1.0)
-				print ("\n{0}[{1}+{0}]{2}Sniffing Websites").format(RED , WHITE , Cafe)
-				urlsnarf = 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "urlsnarf -i {}; bash"'.format(interface)
-				print
-				os.system (urlsnarf)
-				return(choices())
-		
-			
-			elif client_choice == "3":
-				sleep (1.0)
-				print ("\n{0}[{1}+{0}]{2}Sniffing HTTP passwords...").format(RED , WHITE , Cafe)
-				dsniff = 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "dsniff -i {}; bash"'.format(interface)
-				print
-				os.system(dsniff)
-				return(choices())
+		    if client_choice == "1":
+		        sleep (1.0)
+		        print("\n{0}[{1}+{0}]{2}Sniffing Images").format(RED , WHITE , Cafe)
+		        driftnet = 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "driftnet -i {0} -b; bash"'.format(interface)
+		        print
+		        os.system(driftnet)
+		    elif client_choice == "2":
+		        sleep (1.0)
+		        print ("\n{0}[{1}+{0}]{2}Sniffing Websites").format(RED , WHITE , Cafe)
+		        urlsnarf = f'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "urlsnarf -i {interface}; bash"'
 
-			elif client_choice == "4":
-				sleep (1.0)
-				print ("\n{0}[{1}+{0}]{2}Sniffing low encrypted messages...").format(RED , WHITE , Cafe)
-				msgsnarf = 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "msgsnarf -i {}; bash"'.format(interface)
-				print
-				os.system(msgsnarf)
-				return(choices())
+		        print
+		        os.system (urlsnarf)
+		    elif client_choice == "3":
+		        sleep (1.0)
+		        print ("\n{0}[{1}+{0}]{2}Sniffing HTTP passwords...").format(RED , WHITE , Cafe)
+		        dsniff = f'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "dsniff -i {interface}; bash"'
 
-			elif client_choice == "5":
-				sleep (1.0)
-				print ("\n{0}Warning{1}: {2}Many pop-ups will appear!").format(RED , WHITE , Cafe)
-				sleep (5.0)
-				driftnet= 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "driftnet -i {0}; bash"'.format(interface)
-				urlsnarf= 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "urlsnarf -i {}; bash"'.format(interface)
-				dsniff= 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "dsniff -i {}; bash"'.format(interface)
-				msgsnarf= 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "msgsnarf -i {}; bash"'.format(interface)
-				os.system(driftnet)
-				sleep (4.0)
-				os.system(urlsnarf)
-				sleep (4.0)
-				os.system(dsniff)
-				sleep (4.0)
-				os.system(msgsnarf)
-				return(choices())
+		        print
+		        os.system(dsniff)
+		    elif client_choice == "4":
+		        sleep (1.0)
+		        print ("\n{0}[{1}+{0}]{2}Sniffing low encrypted messages...").format(RED , WHITE , Cafe)
+		        msgsnarf = f'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "msgsnarf -i {interface}; bash"'
 
-			else:
-				print ("\n{}Wrong Entry!!").format(RED)
-				return(choices())
+		        print
+		        os.system(msgsnarf)
+		    elif client_choice == "5":
+		        sleep (1.0)
+		        print ("\n{0}Warning{1}: {2}Many pop-ups will appear!").format(RED , WHITE , Cafe)
+		        sleep (5.0)
+		        driftnet= 'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "driftnet -i {0}; bash"'.format(interface)
+		        urlsnarf = f'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "urlsnarf -i {interface}; bash"'
+
+		        dsniff = f'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "dsniff -i {interface}; bash"'
+
+		        msgsnarf = f'gnome-terminal --hide-menubar --geometry=53x17 -x sh -c "msgsnarf -i {interface}; bash"'
+
+		        os.system(driftnet)
+		        sleep (4.0)
+		        os.system(urlsnarf)
+		        sleep (4.0)
+		        os.system(dsniff)
+		        sleep (4.0)
+		        os.system(msgsnarf)
+		    else:
+		        print ("\n{}Wrong Entry!!").format(RED)
+
+		    return(choices())
 
 		print(choices())
 
